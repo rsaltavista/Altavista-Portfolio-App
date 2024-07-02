@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F7550AD2C29E3F700C0A44A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7550AC2C29E3F700C0A44A /* AppDelegate.swift */; };
+		1F7550AF2C29E3F700C0A44A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7550AE2C29E3F700C0A44A /* SceneDelegate.swift */; };
+		1F7550B12C29E3F700C0A44A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7550B02C29E3F700C0A44A /* ViewController.swift */; };
+		1F7550B62C29E3F800C0A44A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7550B52C29E3F800C0A44A /* Assets.xcassets */; };
+		1F7550B92C29E3F800C0A44A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1F7550B82C29E3F800C0A44A /* Base */; };
+		1F7550C32C29F33300C0A44A /* FaceRicardo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F7550C22C29F33300C0A44A /* FaceRicardo.jpg */; };
+		1F7550C52C2DEB7600C0A44A /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7550C42C2DEB7600C0A44A /* CollectionTableViewCell.swift */; };
+		1F7550C72C2DF3B500C0A44A /* TileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7550C62C2DF3B500C0A44A /* TileCollectionViewCell.swift */; };
+		1F9FDD482C2EA50F005835A9 /* Knewave-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F9FDD472C2EA50F005835A9 /* Knewave-Regular.ttf */; };
+		1F9FDD4A2C348852005835A9 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FDD492C348852005835A9 /* Language.swift */; };
+		1F9FDD4C2C3488A2005835A9 /* PickerViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FDD4B2C3488A2005835A9 /* PickerViewPresenter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1F7550A92C29E3F700C0A44A /* AltavistaPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AltavistaPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F7550AC2C29E3F700C0A44A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F7550AE2C29E3F700C0A44A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1F7550B02C29E3F700C0A44A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F7550B52C29E3F800C0A44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F7550B82C29E3F800C0A44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F7550BA2C29E3F800C0A44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F7550C22C29F33300C0A44A /* FaceRicardo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FaceRicardo.jpg; sourceTree = "<group>"; };
+		1F7550C42C2DEB7600C0A44A /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		1F7550C62C2DF3B500C0A44A /* TileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileCollectionViewCell.swift; sourceTree = "<group>"; };
+		1F9FDD472C2EA50F005835A9 /* Knewave-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Knewave-Regular.ttf"; sourceTree = "<group>"; };
+		1F9FDD492C348852005835A9 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		1F9FDD4B2C3488A2005835A9 /* PickerViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewPresenter.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F7550A62C29E3F700C0A44A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F7550A02C29E3F700C0A44A = {
+			isa = PBXGroup;
+			children = (
+				1F7550AB2C29E3F700C0A44A /* AltavistaPortfolio */,
+				1F7550AA2C29E3F700C0A44A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1F7550AA2C29E3F700C0A44A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F7550A92C29E3F700C0A44A /* AltavistaPortfolio.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F7550AB2C29E3F700C0A44A /* AltavistaPortfolio */ = {
+			isa = PBXGroup;
+			children = (
+				1F9FDD432C2EA2AF005835A9 /* Fonts */,
+				1F7550BA2C29E3F800C0A44A /* Info.plist */,
+				1F7550B02C29E3F700C0A44A /* ViewController.swift */,
+				1F7550C42C2DEB7600C0A44A /* CollectionTableViewCell.swift */,
+				1F7550C62C2DF3B500C0A44A /* TileCollectionViewCell.swift */,
+				1F9FDD492C348852005835A9 /* Language.swift */,
+				1F9FDD4B2C3488A2005835A9 /* PickerViewPresenter.swift */,
+				1F7550C12C29F2F300C0A44A /* Supporting */,
+				1F7550C02C29F2E400C0A44A /* Assets */,
+			);
+			path = AltavistaPortfolio;
+			sourceTree = "<group>";
+		};
+		1F7550C02C29F2E400C0A44A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				1F7550C22C29F33300C0A44A /* FaceRicardo.jpg */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		1F7550C12C29F2F300C0A44A /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				1F7550AE2C29E3F700C0A44A /* SceneDelegate.swift */,
+				1F7550AC2C29E3F700C0A44A /* AppDelegate.swift */,
+				1F7550B72C29E3F800C0A44A /* LaunchScreen.storyboard */,
+				1F7550B52C29E3F800C0A44A /* Assets.xcassets */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		1F9FDD432C2EA2AF005835A9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1F9FDD472C2EA50F005835A9 /* Knewave-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F7550A82C29E3F700C0A44A /* AltavistaPortfolio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F7550BD2C29E3F800C0A44A /* Build configuration list for PBXNativeTarget "AltavistaPortfolio" */;
+			buildPhases = (
+				1F7550A52C29E3F700C0A44A /* Sources */,
+				1F7550A62C29E3F700C0A44A /* Frameworks */,
+				1F7550A72C29E3F700C0A44A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AltavistaPortfolio;
+			productName = AltavistaPortfolio;
+			productReference = 1F7550A92C29E3F700C0A44A /* AltavistaPortfolio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F7550A12C29E3F700C0A44A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					1F7550A82C29E3F700C0A44A = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 1F7550A42C29E3F700C0A44A /* Build configuration list for PBXProject "AltavistaPortfolio" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1F7550A02C29E3F700C0A44A;
+			productRefGroup = 1F7550AA2C29E3F700C0A44A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F7550A82C29E3F700C0A44A /* AltavistaPortfolio */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F7550A72C29E3F700C0A44A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F7550C32C29F33300C0A44A /* FaceRicardo.jpg in Resources */,
+				1F7550B62C29E3F800C0A44A /* Assets.xcassets in Resources */,
+				1F7550B92C29E3F800C0A44A /* Base in Resources */,
+				1F9FDD482C2EA50F005835A9 /* Knewave-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F7550A52C29E3F700C0A44A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F7550B12C29E3F700C0A44A /* ViewController.swift in Sources */,
+				1F7550C72C2DF3B500C0A44A /* TileCollectionViewCell.swift in Sources */,
+				1F7550AD2C29E3F700C0A44A /* AppDelegate.swift in Sources */,
+				1F7550AF2C29E3F700C0A44A /* SceneDelegate.swift in Sources */,
+				1F9FDD4C2C3488A2005835A9 /* PickerViewPresenter.swift in Sources */,
+				1F7550C52C2DEB7600C0A44A /* CollectionTableViewCell.swift in Sources */,
+				1F9FDD4A2C348852005835A9 /* Language.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1F7550B72C29E3F800C0A44A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7550B82C29E3F800C0A44A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F7550BB2C29E3F800C0A44A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1F7550BC2C29E3F800C0A44A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F7550BE2C29E3F800C0A44A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TXY4278LK9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AltavistaPortfolio/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Ricardo-Altavista.AltavistaPortfolio";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F7550BF2C29E3F800C0A44A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TXY4278LK9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AltavistaPortfolio/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Ricardo-Altavista.AltavistaPortfolio";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F7550A42C29E3F700C0A44A /* Build configuration list for PBXProject "AltavistaPortfolio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F7550BB2C29E3F800C0A44A /* Debug */,
+				1F7550BC2C29E3F800C0A44A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F7550BD2C29E3F800C0A44A /* Build configuration list for PBXNativeTarget "AltavistaPortfolio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F7550BE2C29E3F800C0A44A /* Debug */,
+				1F7550BF2C29E3F800C0A44A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F7550A12C29E3F700C0A44A /* Project object */;
+}
