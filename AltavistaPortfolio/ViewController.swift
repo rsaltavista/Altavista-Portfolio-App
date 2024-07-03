@@ -69,11 +69,6 @@ class ViewController: UIViewController{
         let image = UIImage(systemName: "moon.fill")
         darkModeImage.image = image
         darkModeImage.tintColor = .white
-        darkModeImage.layer.shadowColor = UIColor.black.cgColor
-        darkModeImage.layer.shadowOpacity = 0.5
-        darkModeImage.layer.shadowRadius = 3.0
-        darkModeImage.layer.shadowOffset.width = 1
-        darkModeImage.layer.shadowOffset.height = 4
         darkModeImage.translatesAutoresizingMaskIntoConstraints = false
         return darkModeImage
     }()
@@ -104,11 +99,6 @@ class ViewController: UIViewController{
         languageLabel.adjustsFontSizeToFitWidth = true
         languageLabel.minimumScaleFactor = 0.5
         languageLabel.isUserInteractionEnabled = true
-        languageLabel.layer.shadowColor = UIColor.black.cgColor
-        languageLabel.layer.shadowRadius = 3.0
-        languageLabel.layer.shadowOpacity = 0.5
-        languageLabel.layer.shadowOffset.width = 1
-        languageLabel.layer.shadowOffset.height = 4
         let languageLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(languageLabelTapped))
         languageLabel.addGestureRecognizer(languageLabelTapGesture)
         
