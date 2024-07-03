@@ -34,16 +34,12 @@ class ViewController: UIViewController{
     
     private let viewModels: [CollectionTableViewCellViewModel] = [
         CollectionTableViewCellViewModel(viewModels: [
-            TileCollectionViewCellViewModel(name: "Apple", background: .white),
-            TileCollectionViewCellViewModel(name: "Microsoft", background: .white),
-            TileCollectionViewCellViewModel(name: "Samsung", background: .white),
-            TileCollectionViewCellViewModel(name: "Nvidia", background: .white),
-            TileCollectionViewCellViewModel(name: "Xiaomi", background: .white),
-            TileCollectionViewCellViewModel(name: "Tesla", background: .white),
-            TileCollectionViewCellViewModel(name: "Instagram", background: .white),
-            TileCollectionViewCellViewModel(name: "Facebook", background: .white),
-            TileCollectionViewCellViewModel(name: "Snapchat", background: .white),
-            TileCollectionViewCellViewModel(name: "TikTok", background: .white),
+            TileCollectionViewCellViewModel(name: "Experiência", background: .white, icon: UIImage(systemName: "briefcase.circle")!),
+            TileCollectionViewCellViewModel(name: "Sobre mim", background: .white, icon: UIImage(systemName: "person.circle")!),
+            TileCollectionViewCellViewModel(name: "Cursos", background: .white, icon: UIImage(systemName: "book.circle")!),
+            TileCollectionViewCellViewModel(name: "Escolaridade", background: .white, icon: UIImage(systemName: "graduationcap.circle")!),
+            TileCollectionViewCellViewModel(name: "Trabalhos Frelancer", background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!),
+            TileCollectionViewCellViewModel(name: "Contato", background: .white, icon: UIImage(systemName: "envelope.circle")!),
         ])
     ]
     private let languages: [String] = ["PT-BR", "EN-US"]
@@ -113,8 +109,8 @@ class ViewController: UIViewController{
         languageLabel.layer.shadowOpacity = 0.5
         languageLabel.layer.shadowOffset.width = 1
         languageLabel.layer.shadowOffset.height = 4
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonTapped))
-        languageLabel.addGestureRecognizer(tapGesture)
+        let languageLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(languageLabelTapped))
+        languageLabel.addGestureRecognizer(languageLabelTapGesture)
         
         pickerViewPresenter.items = languages.map { Language(name: $0) }
 
@@ -178,7 +174,7 @@ class ViewController: UIViewController{
         ])
     }
     
-    @objc private func buttonTapped() {
+    @objc private func languageLabelTapped() {
         pickerViewPresenter.showPicker()
     }
     
