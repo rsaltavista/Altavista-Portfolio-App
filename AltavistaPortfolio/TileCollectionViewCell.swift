@@ -13,7 +13,9 @@ struct TileCollectionViewCellViewModel{
     let icon: UIImage
 }
 
+
 class TileCollectionViewCell: UICollectionViewCell {
+    
     static let identifier = "TileCollectionViewCell"
     
     private let label: UILabel = {

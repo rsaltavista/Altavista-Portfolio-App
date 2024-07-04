@@ -53,7 +53,6 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     override func layoutSubviews() {
         super.layoutSubviews()
         collectionView.frame = contentView.bounds
-        scrollToMiddle()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -89,9 +88,9 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         return 20
     }
     
-    func scrollToMiddle(){
-        let middleIndexPath = IndexPath(item: 1, section: 0)
-                collectionView.scrollToItem(at: middleIndexPath, at: .centeredHorizontally, animated: false)
-    }
+//    func scrollToMiddle(){
+//        let middleIndexPath = IndexPath(item: 1, section: 0)
+//                collectionView.scrollToItem(at: middleIndexPath, at: .centeredHorizontally, animated: false)
+//    }
 
 }

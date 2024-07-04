@@ -11,6 +11,8 @@ class ViewController: UIViewController{
     
     //MARK: Defining Variables
     
+    private var darkModeClicked: Bool = false
+    private var gradientLayer: CAGradientLayer?
     private var selectedItem: Language?
     
     private lazy var pickerViewPresenter: PickerViewPresenter = {
@@ -75,20 +77,37 @@ class ViewController: UIViewController{
     
     //MARK: Function to add a gradient background color
     
-    private func addHeaderGradient() {
-        let gradient = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [
-            UIColor.firstGradient.cgColor,
-            UIColor.secondGradient.cgColor,
-            UIColor.thirdGradient.cgColor,
-        ]
-        view.layer.addSublayer(gradient)
-      }
+    private func createGradientLayer() {
+            gradientLayer = CAGradientLayer()
+            gradientLayer?.frame = view.bounds
+            gradientLayer?.colors = [
+                UIColor.firstGradient.cgColor,
+                UIColor.secondGradient.cgColor,
+                UIColor.thirdGradient.cgColor,
+            ]
+            if let gradientLayer = gradientLayer {
+                view.layer.insertSublayer(gradientLayer, at: 0)
+            }
+        }
+    
+    private func updateGradientColors(darkMode: Bool) {
+            if darkMode {
+                gradientLayer?.colors = [
+                    UIColor.black.cgColor,
+                    UIColor.blue.cgColor,
+                    UIColor.purple.cgColor,
+                ]
+            } else {
+                gradientLayer?.colors = [
+                    UIColor.firstGradient.cgColor,
+                    UIColor.secondGradient.cgColor,
+                    UIColor.thirdGradient.cgColor,
+                ]
+            }
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addHeaderGradient()
                 
         //MARK: properties of languageLabel
         languageLabel = UILabel()
@@ -103,6 +122,9 @@ class ViewController: UIViewController{
         languageLabel.addGestureRecognizer(languageLabelTapGesture)
         
         pickerViewPresenter.items = languages.map { Language(name: $0) }
+        
+        let darkModeTapGesture = UITapGestureRecognizer(target: self, action: #selector(darkModeTapped))
+        darkModeImage.addGestureRecognizer(darkModeTapGesture)
 
         //MARK: adding subViews
         self.view.addSubview(profileImageView)
@@ -134,8 +156,12 @@ class ViewController: UIViewController{
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        if gradientLayer == nil {
+                    createGradientLayer()
+                } else {
+                    gradientLayer?.frame = view.bounds
+                }
         tableView.frame = CGRect(x: 0, y: 370, width: view.bounds.width, height: 400)
-
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
 
     }
@@ -166,6 +192,11 @@ class ViewController: UIViewController{
     
     @objc private func languageLabelTapped() {
         pickerViewPresenter.showPicker()
+    }
+    
+    @objc private func darkModeTapped(){
+        darkModeClicked.toggle()
+        updateGradientColors(darkMode: darkModeClicked)
     }
     
     private func getLabelWithIcon(for language: String) -> NSAttributedString{
