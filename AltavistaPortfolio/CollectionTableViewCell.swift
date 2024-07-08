@@ -22,6 +22,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     weak var delegateCollection: CollectionTableViewCellDelegate?
     
     private var viewModels:[TileCollectionViewCellViewModel] = []
+    private var darkModeEnabled: Bool = false
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -64,12 +65,13 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
             fatalError()
         }
         
-        cell.configure(with: viewModels[indexPath.row])
+        cell.configure(with: viewModels[indexPath.row], darkModeEnabled: darkModeEnabled)
         return cell
     }
     
-    func configure(with viewModel: CollectionTableViewCellViewModel){
+    func configure(with viewModel: CollectionTableViewCellViewModel, darkModeEnabled: Bool){
         self.viewModels = viewModel.viewModels
+        self.darkModeEnabled = darkModeEnabled
         collectionView.reloadData()
     }
     

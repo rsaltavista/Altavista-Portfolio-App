@@ -8,7 +8,7 @@
 import UIKit
 
 struct TileCollectionViewCellViewModel{
-    let name: String
+    let label: String
     let background: UIColor
     let icon: UIImage
 }
@@ -18,18 +18,16 @@ class TileCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "TileCollectionViewCell"
     
-    private let label: UILabel = {
+     let label: UILabel = {
         let label = UILabel()
-        label.textColor = .main
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20, weight: .medium)
         
         return label
     }()
     
-    private let iconView: UIImageView = {
+     let iconView: UIImageView = {
         let iconView = UIImageView()
-        iconView.tintColor = UIColor.main
         return iconView
     }()
     
@@ -50,9 +48,11 @@ class TileCollectionViewCell: UICollectionViewCell {
         iconView.frame = CGRect(x: 20, y: 20, width: 40, height: 40)
     }
     
-    func configure(with viewModel: TileCollectionViewCellViewModel){
+    func configure(with viewModel: TileCollectionViewCellViewModel, darkModeEnabled: Bool){
         contentView.backgroundColor = viewModel.background
-        label.text = viewModel.name
+        label.text = viewModel.label
         iconView.image = viewModel.icon
+        label.textColor = darkModeEnabled ? .darkTile : .main
+        iconView.tintColor = darkModeEnabled ? .darkTile : .main
     }
 }
