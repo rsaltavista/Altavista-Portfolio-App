@@ -22,6 +22,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     weak var delegateCollection: CollectionTableViewCellDelegate?
     
     private var viewModels:[TileCollectionViewCellViewModel] = []
+    private var darkModeEnabled: Bool = false
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -53,7 +54,6 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     override func layoutSubviews() {
         super.layoutSubviews()
         collectionView.frame = contentView.bounds
-        scrollToMiddle()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,12 +65,13 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
             fatalError()
         }
         
-        cell.configure(with: viewModels[indexPath.row])
+        cell.configure(with: viewModels[indexPath.row], darkModeEnabled: darkModeEnabled)
         return cell
     }
     
-    func configure(with viewModel: CollectionTableViewCellViewModel){
+    func configure(with viewModel: CollectionTableViewCellViewModel, darkModeEnabled: Bool){
         self.viewModels = viewModel.viewModels
+        self.darkModeEnabled = darkModeEnabled
         collectionView.reloadData()
     }
     
@@ -79,19 +80,15 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         return CGSize(width: width, height: contentView.frame.size.height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let viewModel = viewModels[indexPath.row]
-        delegateCollection?.collectionTableViewCellDidTapItem(with: viewModel)
+        if let cell = collectionView.cellForItem(at: indexPath) as? TileCollectionViewCell {
+            cell.flip()
+        }
+        print(indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
     }
-    
-    func scrollToMiddle(){
-        let middleIndexPath = IndexPath(item: 1, section: 0)
-                collectionView.scrollToItem(at: middleIndexPath, at: .centeredHorizontally, animated: false)
-    }
-
 }

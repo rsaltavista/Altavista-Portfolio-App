@@ -11,6 +11,13 @@ class ViewController: UIViewController{
     
     //MARK: Defining Variables
     
+    private var currentLanguage: Translate = Translate.PTBR
+    
+    private lazy var darkModeClicked: Bool = {
+        return traitCollection.userInterfaceStyle == .dark ? true :  false
+    }()
+    
+    private var gradientLayer: CAGradientLayer?
     private var selectedItem: Language?
     
     private lazy var pickerViewPresenter: PickerViewPresenter = {
@@ -18,6 +25,8 @@ class ViewController: UIViewController{
         pickerViewPresenter.didSelectItem = { [weak self] item in
             self?.selectedItem = item
             self?.languageLabel.attributedText = self?.getLabelWithIcon(for: item.name)
+            self?.updateLanguage(to: item.name)
+
         }
         return pickerViewPresenter
     }()
@@ -32,16 +41,18 @@ class ViewController: UIViewController{
         return name
     }()
     
-    private let viewModels: [CollectionTableViewCellViewModel] = [
+    private var viewModels: [CollectionTableViewCellViewModel] = [
         CollectionTableViewCellViewModel(viewModels: [
-            TileCollectionViewCellViewModel(name: "Experiência", background: .white, icon: UIImage(systemName: "briefcase.circle")!),
-            TileCollectionViewCellViewModel(name: "Sobre mim", background: .white, icon: UIImage(systemName: "person.circle")!),
-            TileCollectionViewCellViewModel(name: "Cursos", background: .white, icon: UIImage(systemName: "book.circle")!),
-            TileCollectionViewCellViewModel(name: "Escolaridade", background: .white, icon: UIImage(systemName: "graduationcap.circle")!),
-            TileCollectionViewCellViewModel(name: "Trabalhos Frelancer", background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!),
-            TileCollectionViewCellViewModel(name: "Contato", background: .white, icon: UIImage(systemName: "envelope.circle")!),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.experiencia, background: .white, icon: UIImage(systemName: "briefcase.circle")!, backData: "09/22 - 12/23", backContent: Translate.PTBR.experieciaDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.sobreMim, background: .white, icon: UIImage(systemName: "person.circle")!, backData: "", backContent: Translate.PTBR.sobreMimDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.cursos, background: .white, icon: UIImage(systemName: "book.circle")!, backData: "", backContent: Translate.PTBR.cursosDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.formacao, background: .white, icon: UIImage(systemName: "graduationcap.circle")!, backData: "03/22 - 12/23", backContent: Translate.PTBR.formacaoDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.skills, background: .white, icon: UIImage(systemName: "circle.hexagongrid.circle")!, backData: "", backContent: "", backSkills: Translate.PTBR.skillsDescricao),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.freelancer, background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!, backData: "", backContent: Translate.PTBR.freelancerDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.contato, background: .white, icon: UIImage(systemName: "envelope.circle")!, backData: "", backContent: Translate.PTBR.contatoDescricao, backSkills: ""),
         ])
     ]
+    
     private let languages: [String] = ["PT-BR", "EN-US"]
     private var languageLabel: UILabel!
     private let tableView: UITableView = {
@@ -73,36 +84,21 @@ class ViewController: UIViewController{
         return darkModeImage
     }()
     
-    //MARK: Function to add a gradient background color
-    
-    private func addHeaderGradient() {
-        let gradient = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [
-            UIColor.firstGradient.cgColor,
-            UIColor.secondGradient.cgColor,
-            UIColor.thirdGradient.cgColor,
-        ]
-        view.layer.addSublayer(gradient)
-      }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        addHeaderGradient()
-                
+        
+        // MARK: Variable to make the title color white
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.standardAppearance = appearance
+        
         //MARK: properties of languageLabel
-        languageLabel = UILabel()
-        languageLabel.attributedText = getLabelWithIcon(for: languages[0])
-        languageLabel.textColor = .white
-        languageLabel.numberOfLines = 1
-        languageLabel.lineBreakMode = .byTruncatingTail
-        languageLabel.adjustsFontSizeToFitWidth = true
-        languageLabel.minimumScaleFactor = 0.5
-        languageLabel.isUserInteractionEnabled = true
-        let languageLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(languageLabelTapped))
-        languageLabel.addGestureRecognizer(languageLabelTapGesture)
+        setupLanguageLabel()
         
         pickerViewPresenter.items = languages.map { Language(name: $0) }
+        
+        let darkModeTapGesture = UITapGestureRecognizer(target: self, action: #selector(darkModeTapped))
+        darkModeImage.addGestureRecognizer(darkModeTapGesture)
 
         //MARK: adding subViews
         self.view.addSubview(profileImageView)
@@ -125,6 +121,96 @@ class ViewController: UIViewController{
         setupNavigationBar()
     }
     
+    //MARK: Function to add a gradient background color
+    
+    private func createGradientLayer() {
+            gradientLayer = CAGradientLayer()
+            gradientLayer?.frame = view.bounds
+        updateGradientColors()
+
+            if let gradientLayer = gradientLayer {
+                view.layer.insertSublayer(gradientLayer, at: 0)
+            }
+        }
+    
+    private func updateGradientColors() {
+            if traitCollection.userInterfaceStyle == .dark {
+                gradientLayer?.colors = [
+                    UIColor.black.cgColor,
+                    UIColor.blue.cgColor,
+                    UIColor.purple.cgColor,
+                ]
+                darkModeImage.image = UIImage(systemName: "sun.min.fill")
+            } else {
+                gradientLayer?.colors = [
+                    UIColor.firstGradient.cgColor,
+                    UIColor.secondGradient.cgColor,
+                    UIColor.thirdGradient.cgColor,
+                ]
+            }
+        }
+    
+    private func updateBackgroundIfTapped(darkMode: Bool){
+        if darkMode{
+            darkModeImage.image = UIImage(systemName: "sun.min.fill")
+            gradientLayer?.colors = [
+                UIColor.black.cgColor,
+                UIColor.blue.cgColor,
+                UIColor.purple.cgColor,
+            ]
+        }
+        else{
+            darkModeImage.image = UIImage(systemName: "moon.fill")
+            gradientLayer?.colors = [
+                UIColor.firstGradient.cgColor,
+                UIColor.secondGradient.cgColor,
+                UIColor.thirdGradient.cgColor,
+            ]
+        }
+    }
+    
+    private func updateLanguage(to language: String){
+        switch language{
+        case "PT-BR":
+            currentLanguage = Translate.PTBR
+        case "EN-US":
+            currentLanguage = Translate.ENUS
+        default:
+            currentLanguage = Translate.PTBR
+        }
+        updateUIForCurrentLanguage()
+    }
+    
+    private func updateUIForCurrentLanguage() {
+        
+        // Update the collection view cell view models
+        let newViewModels = [
+            TileCollectionViewCellViewModel(label: currentLanguage.experiencia, background: .white, icon: UIImage(systemName: "briefcase.circle")!, backData: "09/22 - 12/23", backContent: currentLanguage.experieciaDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.sobreMim, background: .white, icon: UIImage(systemName: "person.circle")!, backData: "", backContent: currentLanguage.sobreMimDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.cursos, background: .white, icon: UIImage(systemName: "book.circle")!, backData: "", backContent: currentLanguage.cursosDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.formacao, background: .white, icon: UIImage(systemName: "graduationcap.circle")!, backData: "03/22 - 12/23", backContent: currentLanguage.formacaoDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.skills, background: .white, icon: UIImage(systemName: "circle.hexagongrid.circle")!, backData: "", backContent: "", backSkills: currentLanguage.skillsDescricao),
+            TileCollectionViewCellViewModel(label: currentLanguage.freelancer, background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!, backData: "", backContent: currentLanguage.freelancerDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.contato, background: .white, icon: UIImage(systemName: "envelope.circle")!, backData: "", backContent: currentLanguage.contatoDescricao, backSkills: "")
+        ]
+        
+        viewModels[0] = CollectionTableViewCellViewModel(viewModels: newViewModels)
+        tableView.reloadData()
+    }
+    
+    private func setupLanguageLabel(){
+        languageLabel = UILabel()
+        languageLabel.attributedText = getLabelWithIcon(for: languages[0])
+        languageLabel.textColor = .white
+        languageLabel.numberOfLines = 1
+        languageLabel.lineBreakMode = .byTruncatingTail
+        languageLabel.adjustsFontSizeToFitWidth = true
+        languageLabel.minimumScaleFactor = 0.5
+        languageLabel.isUserInteractionEnabled = true
+        let languageLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(languageLabelTapped))
+        languageLabel.addGestureRecognizer(languageLabelTapGesture)
+    }
+    
     //MARK: creating navigationBar
     private func setupNavigationBar(){
         self.title = "Altavista Portfolio App"
@@ -134,13 +220,19 @@ class ViewController: UIViewController{
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        if gradientLayer == nil {
+                    createGradientLayer()
+                } else {
+                    gradientLayer?.frame = view.bounds
+                }
         tableView.frame = CGRect(x: 0, y: 370, width: view.bounds.width, height: 400)
-
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
 
     }
     
-    //MARK: setting constraints
+//MARK: setting constraints
+    
+    //MARK: Constraints of profile image
     private func setProfileImageConstraints(){
         NSLayoutConstraint.activate([
             profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -150,6 +242,7 @@ class ViewController: UIViewController{
         ])
     }
 
+    // MARK: Constraints of darkmodeIcon
     private func setDarkModeImageConstraints(){
         NSLayoutConstraint.activate([
             darkModeImage.widthAnchor.constraint(equalToConstant: 30),
@@ -157,17 +250,25 @@ class ViewController: UIViewController{
         ])
     }
     
+    // MARK: Constraints of Name
     private func setNameConstraints(){
         NSLayoutConstraint.activate([
             name.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             name.centerYAnchor.constraint(greaterThanOrEqualTo: profileImageView.centerYAnchor, constant: 100)
         ])
     }
-    
+    //MARK: Function called when user click on language label
     @objc private func languageLabelTapped() {
         pickerViewPresenter.showPicker()
     }
-    
+    //MARK: Function called when user click on darkmode icon
+    @objc private func darkModeTapped(){
+        darkModeClicked.toggle()
+        updateBackgroundIfTapped(darkMode: darkModeClicked)
+        tableView.reloadData()
+    }
+
+    //MARK: Function to put a icon on language label
     private func getLabelWithIcon(for language: String) -> NSAttributedString{
         let fullString = NSMutableAttributedString(string: language)
         
@@ -201,8 +302,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else{
             fatalError()
         }
-        cell.configure(with: viewModel)
-        cell.delegateCollection = self
+        cell.configure(with: viewModel, darkModeEnabled: darkModeClicked)
         return cell
     }
     
@@ -211,15 +311,3 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
         
 }
-
-extension ViewController: CollectionTableViewCellDelegate{
-    func collectionTableViewCellDidTapItem(with viewModel: TileCollectionViewCellViewModel) {
-        print("opened a new view")
-    }
-}
-
-
-
-
-
-
