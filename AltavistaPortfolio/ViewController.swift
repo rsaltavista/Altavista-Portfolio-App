@@ -43,14 +43,16 @@ class ViewController: UIViewController{
     
     private var viewModels: [CollectionTableViewCellViewModel] = [
         CollectionTableViewCellViewModel(viewModels: [
-            TileCollectionViewCellViewModel(label: Translate.PTBR.experiencia, background: .white, icon: UIImage(systemName: "briefcase.circle")!),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.sobreMim, background: .white, icon: UIImage(systemName: "person.circle")!),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.cursos, background: .white, icon: UIImage(systemName: "book.circle")!),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.formacao, background: .white, icon: UIImage(systemName: "graduationcap.circle")!),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.freelancer, background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.contato, background: .white, icon: UIImage(systemName: "envelope.circle")!),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.experiencia, background: .white, icon: UIImage(systemName: "briefcase.circle")!, backData: "09/22 - 12/23", backContent: Translate.PTBR.experieciaDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.sobreMim, background: .white, icon: UIImage(systemName: "person.circle")!, backData: "", backContent: Translate.PTBR.sobreMimDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.cursos, background: .white, icon: UIImage(systemName: "book.circle")!, backData: "", backContent: Translate.PTBR.cursosDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.formacao, background: .white, icon: UIImage(systemName: "graduationcap.circle")!, backData: "03/22 - 12/23", backContent: Translate.PTBR.formacaoDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.skills, background: .white, icon: UIImage(systemName: "circle.hexagongrid.circle")!, backData: "", backContent: "", backSkills: Translate.PTBR.skillsDescricao),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.freelancer, background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!, backData: "", backContent: Translate.PTBR.freelancerDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: Translate.PTBR.contato, background: .white, icon: UIImage(systemName: "envelope.circle")!, backData: "", backContent: Translate.PTBR.contatoDescricao, backSkills: ""),
         ])
     ]
+    
     private let languages: [String] = ["PT-BR", "EN-US"]
     private var languageLabel: UILabel!
     private let tableView: UITableView = {
@@ -183,12 +185,13 @@ class ViewController: UIViewController{
         
         // Update the collection view cell view models
         let newViewModels = [
-            TileCollectionViewCellViewModel(label: currentLanguage.experiencia, background: .white, icon: UIImage(systemName: "briefcase.circle")!),
-            TileCollectionViewCellViewModel(label: currentLanguage.sobreMim, background: .white, icon: UIImage(systemName: "person.circle")!),
-            TileCollectionViewCellViewModel(label: currentLanguage.cursos, background: .white, icon: UIImage(systemName: "book.circle")!),
-            TileCollectionViewCellViewModel(label: currentLanguage.formacao, background: .white, icon: UIImage(systemName: "graduationcap.circle")!),
-            TileCollectionViewCellViewModel(label: currentLanguage.freelancer, background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!),
-            TileCollectionViewCellViewModel(label: currentLanguage.contato, background: .white, icon: UIImage(systemName: "envelope.circle")!)
+            TileCollectionViewCellViewModel(label: currentLanguage.experiencia, background: .white, icon: UIImage(systemName: "briefcase.circle")!, backData: "09/22 - 12/23", backContent: currentLanguage.experieciaDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.sobreMim, background: .white, icon: UIImage(systemName: "person.circle")!, backData: "", backContent: currentLanguage.sobreMimDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.cursos, background: .white, icon: UIImage(systemName: "book.circle")!, backData: "", backContent: currentLanguage.cursosDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.formacao, background: .white, icon: UIImage(systemName: "graduationcap.circle")!, backData: "03/22 - 12/23", backContent: currentLanguage.formacaoDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.skills, background: .white, icon: UIImage(systemName: "circle.hexagongrid.circle")!, backData: "", backContent: "", backSkills: currentLanguage.skillsDescricao),
+            TileCollectionViewCellViewModel(label: currentLanguage.freelancer, background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!, backData: "", backContent: currentLanguage.freelancerDescricao, backSkills: ""),
+            TileCollectionViewCellViewModel(label: currentLanguage.contato, background: .white, icon: UIImage(systemName: "envelope.circle")!, backData: "", backContent: currentLanguage.contatoDescricao, backSkills: "")
         ]
         
         viewModels[0] = CollectionTableViewCellViewModel(viewModels: newViewModels)
@@ -263,12 +266,8 @@ class ViewController: UIViewController{
         darkModeClicked.toggle()
         updateBackgroundIfTapped(darkMode: darkModeClicked)
         tableView.reloadData()
-        print(viewModels[0])
     }
-//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-//           super.traitCollectionDidChange(previousTraitCollection)
-//           updateGradientColors()
-//       }
+
     //MARK: Function to put a icon on language label
     private func getLabelWithIcon(for language: String) -> NSAttributedString{
         let fullString = NSMutableAttributedString(string: language)
@@ -304,7 +303,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             fatalError()
         }
         cell.configure(with: viewModel, darkModeEnabled: darkModeClicked)
-        cell.delegateCollection = self
         return cell
     }
     
@@ -312,10 +310,4 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         return 400
     }
         
-}
-
-extension ViewController: CollectionTableViewCellDelegate{
-    func collectionTableViewCellDidTapItem(with viewModel: TileCollectionViewCellViewModel) {
-        print("opened a new view")
-    }
 }
