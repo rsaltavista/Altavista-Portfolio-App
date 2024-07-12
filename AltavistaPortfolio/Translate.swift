@@ -76,9 +76,9 @@ struct Translate {
         
         Celular: +55 11 999821200
         
-        Linkedin: https://www.linkedin.com/in/ricardo-altavista-875071231/
+        Linkedin:
         
-        Github: https://github.com/rsaltavista
+        Github: 
         """
     )
     
@@ -126,16 +126,16 @@ struct Translate {
         Website creation for an event with 300 guests;
 
         I developed and sold a website for the law firm Nardeli neto;
-""",
+        """,
         contatoDescricao: """
         Mail: rsaltavista@gmail.com
         
         Phone: +55 11 999821200
         
-        Linkedin: https://www.linkedin.com/in/ricardo-altavista-875071231/
+        Linkedin:
         
-        Github: https://github.com/rsaltavista
-"""
+        Github:
+        """
     )
 }
 

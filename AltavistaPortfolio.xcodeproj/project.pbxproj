@@ -19,6 +19,7 @@
 		1F9FDD4A2C348852005835A9 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FDD492C348852005835A9 /* Language.swift */; };
 		1F9FDD4C2C3488A2005835A9 /* PickerViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FDD4B2C3488A2005835A9 /* PickerViewPresenter.swift */; };
 		1F9FDD502C3C6DDD005835A9 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FDD4F2C3C6DDD005835A9 /* Translate.swift */; };
+		1F9FDD562C416916005835A9 /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FDD552C416916005835A9 /* CardsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1F9FDD492C348852005835A9 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		1F9FDD4B2C3488A2005835A9 /* PickerViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewPresenter.swift; sourceTree = "<group>"; };
 		1F9FDD4F2C3C6DDD005835A9 /* Translate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
+		1F9FDD552C416916005835A9 /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				1F7550B02C29E3F700C0A44A /* ViewController.swift */,
 				1F7550C42C2DEB7600C0A44A /* CollectionTableViewCell.swift */,
 				1F7550C62C2DF3B500C0A44A /* TileCollectionViewCell.swift */,
+				1F9FDD552C416916005835A9 /* CardsViewModel.swift */,
 				1F9FDD492C348852005835A9 /* Language.swift */,
 				1F9FDD4B2C3488A2005835A9 /* PickerViewPresenter.swift */,
 				1F9FDD4F2C3C6DDD005835A9 /* Translate.swift */,
@@ -186,6 +189,7 @@
 				1F7550AD2C29E3F700C0A44A /* AppDelegate.swift in Sources */,
 				1F7550AF2C29E3F700C0A44A /* SceneDelegate.swift in Sources */,
 				1F9FDD4C2C3488A2005835A9 /* PickerViewPresenter.swift in Sources */,
+				1F9FDD562C416916005835A9 /* CardsViewModel.swift in Sources */,
 				1F7550C52C2DEB7600C0A44A /* CollectionTableViewCell.swift in Sources */,
 				1F9FDD502C3C6DDD005835A9 /* Translate.swift in Sources */,
 				1F9FDD4A2C348852005835A9 /* Language.swift in Sources */,

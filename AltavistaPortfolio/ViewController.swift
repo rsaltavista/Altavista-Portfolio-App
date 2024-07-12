@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController{
     
     //MARK: Defining Variables
-    
     private var currentLanguage: Translate = Translate.PTBR
     
     private lazy var darkModeClicked: Bool = {
@@ -43,13 +42,73 @@ class ViewController: UIViewController{
     
     private var viewModels: [CollectionTableViewCellViewModel] = [
         CollectionTableViewCellViewModel(viewModels: [
-            TileCollectionViewCellViewModel(label: Translate.PTBR.experiencia, background: .white, icon: UIImage(systemName: "briefcase.circle")!, backData: "09/22 - 12/23", backContent: Translate.PTBR.experieciaDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.sobreMim, background: .white, icon: UIImage(systemName: "person.circle")!, backData: "", backContent: Translate.PTBR.sobreMimDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.cursos, background: .white, icon: UIImage(systemName: "book.circle")!, backData: "", backContent: Translate.PTBR.cursosDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.formacao, background: .white, icon: UIImage(systemName: "graduationcap.circle")!, backData: "03/22 - 12/23", backContent: Translate.PTBR.formacaoDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.skills, background: .white, icon: UIImage(systemName: "circle.hexagongrid.circle")!, backData: "", backContent: "", backSkills: Translate.PTBR.skillsDescricao),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.freelancer, background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!, backData: "", backContent: Translate.PTBR.freelancerDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: Translate.PTBR.contato, background: .white, icon: UIImage(systemName: "envelope.circle")!, backData: "", backContent: Translate.PTBR.contatoDescricao, backSkills: ""),
+            CardsViewModel(
+                label: Translate.PTBR.experiencia,
+                background: .white, icon: UIImage(systemName: "briefcase.circle")!,
+                backData: "09/22 - 12/23",
+                backContent: Translate.PTBR.experieciaDescricao,
+                backSkills: "",
+                linkedInURL: "",
+                githubURL: ""
+            ),
+            CardsViewModel(
+                label: Translate.PTBR.sobreMim,
+                background: .white,
+                icon: UIImage(systemName: "person.circle")!,
+                backData: "", backContent: Translate.PTBR.sobreMimDescricao,
+                backSkills: "",
+                linkedInURL: "",
+                githubURL: ""
+            ),
+            CardsViewModel(
+                label: Translate.PTBR.cursos,
+                background: .white,
+                icon: UIImage(systemName: "book.circle")!,
+                backData: "", backContent: Translate.PTBR.cursosDescricao,
+                backSkills: "",
+                linkedInURL: "",
+                githubURL: ""
+            ),
+            CardsViewModel(
+                label: Translate.PTBR.formacao,
+                background: .white,
+                icon: UIImage(systemName: "graduationcap.circle")!,
+                backData: "03/22 - 12/23",
+                backContent: Translate.PTBR.formacaoDescricao,
+                backSkills: "",
+                linkedInURL: "",
+                githubURL: ""
+            ),
+            CardsViewModel(
+                label: Translate.PTBR.skills,
+                background: .white,
+                icon: UIImage(systemName: "circle.hexagongrid.circle")!,
+                backData: "",
+                backContent: "",
+                backSkills: Translate.PTBR.skillsDescricao,
+                linkedInURL: "",
+                githubURL: ""
+            ),
+            CardsViewModel(
+                label: Translate.PTBR.freelancer,
+                background: .white,
+                icon: UIImage(systemName: "pencil.tip.crop.circle")!,
+                backData: "",
+                backContent: Translate.PTBR.freelancerDescricao,
+                backSkills: "",
+                linkedInURL: "",
+                githubURL: ""
+            ),
+            CardsViewModel(
+                label: Translate.PTBR.contato,
+                background: .white,
+                icon: UIImage(systemName: "envelope.circle")!,
+                backData: "",
+                backContent: Translate.PTBR.contatoDescricao,
+                backSkills: "",
+                linkedInURL: "https://www.linkedin.com/in/ricardo-altavista-875071231/",
+                githubURL: "https://github.com/rsaltavista"
+            ),
         ])
     ]
     
@@ -57,7 +116,8 @@ class ViewController: UIViewController{
     private var languageLabel: UILabel!
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        tableView.register(
+            CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
@@ -126,7 +186,7 @@ class ViewController: UIViewController{
     private func createGradientLayer() {
             gradientLayer = CAGradientLayer()
             gradientLayer?.frame = view.bounds
-        updateGradientColors()
+            updateGradientColors()
 
             if let gradientLayer = gradientLayer {
                 view.layer.insertSublayer(gradientLayer, at: 0)
@@ -185,13 +245,14 @@ class ViewController: UIViewController{
         
         // Update the collection view cell view models
         let newViewModels = [
-            TileCollectionViewCellViewModel(label: currentLanguage.experiencia, background: .white, icon: UIImage(systemName: "briefcase.circle")!, backData: "09/22 - 12/23", backContent: currentLanguage.experieciaDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: currentLanguage.sobreMim, background: .white, icon: UIImage(systemName: "person.circle")!, backData: "", backContent: currentLanguage.sobreMimDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: currentLanguage.cursos, background: .white, icon: UIImage(systemName: "book.circle")!, backData: "", backContent: currentLanguage.cursosDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: currentLanguage.formacao, background: .white, icon: UIImage(systemName: "graduationcap.circle")!, backData: "03/22 - 12/23", backContent: currentLanguage.formacaoDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: currentLanguage.skills, background: .white, icon: UIImage(systemName: "circle.hexagongrid.circle")!, backData: "", backContent: "", backSkills: currentLanguage.skillsDescricao),
-            TileCollectionViewCellViewModel(label: currentLanguage.freelancer, background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!, backData: "", backContent: currentLanguage.freelancerDescricao, backSkills: ""),
-            TileCollectionViewCellViewModel(label: currentLanguage.contato, background: .white, icon: UIImage(systemName: "envelope.circle")!, backData: "", backContent: currentLanguage.contatoDescricao, backSkills: "")
+            CardsViewModel(label: currentLanguage.experiencia, background: .white, icon: UIImage(systemName: "briefcase.circle")!, backData: "09/22 - 12/23", backContent: currentLanguage.experieciaDescricao, backSkills: "", linkedInURL: "", githubURL: ""),
+            CardsViewModel(label: currentLanguage.sobreMim, background: .white, icon: UIImage(systemName: "person.circle")!, backData: "", backContent: currentLanguage.sobreMimDescricao, backSkills: "", linkedInURL: "", githubURL: ""),
+            CardsViewModel(label: currentLanguage.cursos, background: .white, icon: UIImage(systemName: "book.circle")!, backData: "", backContent: currentLanguage.cursosDescricao, backSkills: "", linkedInURL: "", githubURL: ""),
+            CardsViewModel(label: currentLanguage.formacao, background: .white, icon: UIImage(systemName: "graduationcap.circle")!, backData: "03/22 - 12/23", backContent: currentLanguage.formacaoDescricao, backSkills: "", linkedInURL: "", githubURL: ""),
+            CardsViewModel(label: currentLanguage.skills, background: .white, icon: UIImage(systemName: "circle.hexagongrid.circle")!, backData: "", backContent: "", backSkills: currentLanguage.skillsDescricao, linkedInURL: "", githubURL: ""),
+            CardsViewModel(label: currentLanguage.freelancer, background: .white, icon: UIImage(systemName: "pencil.tip.crop.circle")!, backData: "", backContent: currentLanguage.freelancerDescricao, backSkills: "", linkedInURL: "", githubURL: ""),
+            CardsViewModel(label: currentLanguage.contato, background: .white, icon: UIImage(systemName: "envelope.circle")!, backData: "", backContent: currentLanguage.contatoDescricao, backSkills: "", linkedInURL: "https://www.linkedin.com/in/ricardo-altavista-875071231/",
+                                            githubURL: "https://github.com/rsaltavista")
         ]
         
         viewModels[0] = CollectionTableViewCellViewModel(viewModels: newViewModels)

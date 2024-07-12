@@ -8,11 +8,11 @@
 import UIKit
 
 struct CollectionTableViewCellViewModel{
-    let viewModels: [TileCollectionViewCellViewModel]
+    let viewModels: [CardsViewModel]
 }
 
 protocol CollectionTableViewCellDelegate: AnyObject{
-    func collectionTableViewCellDidTapItem(with viewModel: TileCollectionViewCellViewModel)
+    func collectionTableViewCellDidTapItem(with viewModel: CardsViewModel)
 }
 
 class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -21,7 +21,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     weak var delegateCollection: CollectionTableViewCellDelegate?
     
-    private var viewModels:[TileCollectionViewCellViewModel] = []
+    private var viewModels:[CardsViewModel] = []
     private var darkModeEnabled: Bool = false
     
     private let collectionView: UICollectionView = {
@@ -43,8 +43,6 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         collectionView.dataSource = self
         contentView.backgroundColor = .clear
         backgroundColor = .clear
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -85,7 +83,6 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         if let cell = collectionView.cellForItem(at: indexPath) as? TileCollectionViewCell {
             cell.flip()
         }
-        print(indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

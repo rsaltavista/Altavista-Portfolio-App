@@ -7,16 +7,6 @@
 
 import UIKit
 
-struct TileCollectionViewCellViewModel{
-    let label: String
-    let background: UIColor
-    let icon: UIImage
-    let backData: String?
-    let backContent: String
-    let backSkills: String?
-}
-
-
 class TileCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "TileCollectionViewCell"
@@ -69,6 +59,26 @@ class TileCollectionViewCell: UICollectionViewCell {
             label.translatesAutoresizingMaskIntoConstraints = false
            return label
         }()
+        
+        private let linkedInLabel: UILabel = {
+            let label = UILabel()
+            label.textAlignment = .left
+            label.font = .systemFont(ofSize: 16, weight: .regular)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.textColor = .systemBlue
+            label.isUserInteractionEnabled = true
+            return label
+        }()
+        
+        private let githubLabel: UILabel = {
+            let label = UILabel()
+            label.textAlignment = .left
+            label.font = .systemFont(ofSize: 16, weight: .regular)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.textColor = .systemBlue
+            label.isUserInteractionEnabled = true
+            return label
+        }()
     
     private func setupBackLabelConstraints(){
         NSLayoutConstraint.activate([
@@ -89,30 +99,22 @@ class TileCollectionViewCell: UICollectionViewCell {
             backData.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -150)
         ])
     }
+    private func setupContactInfoConstraints() {
+            NSLayoutConstraint.activate([
+                linkedInLabel.topAnchor.constraint(equalTo: backLabel.bottomAnchor, constant: -56),
+                linkedInLabel.leadingAnchor.constraint(equalTo: backLabel.leadingAnchor, constant: 70),
+                linkedInLabel.trailingAnchor.constraint(equalTo: backLabel.trailingAnchor),
+                
+                githubLabel.topAnchor.constraint(equalTo: linkedInLabel.bottomAnchor, constant: 19),
+                githubLabel.leadingAnchor.constraint(equalTo: backLabel.leadingAnchor, constant: 60),
+                githubLabel.trailingAnchor.constraint(equalTo: backLabel.trailingAnchor)
+            ])
+        }
        
        private var isFlipped = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(frontView)
-        contentView.addSubview(backView)
-        contentView.addSubview(label)
-        contentView.addSubview(iconView)
-        backView.addSubview(backLabel)
-        backView.addSubview(backData)
-        backView.addSubview(backSkills)
-        backView.isHidden = true
-        contentView.layer.cornerRadius = 10
-        contentView.clipsToBounds = true
-
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         frontView.frame = contentView.bounds
         backView.frame = contentView.bounds
         label.frame = contentView.bounds
@@ -120,9 +122,33 @@ class TileCollectionViewCell: UICollectionViewCell {
         backLabel.frame = contentView.bounds
         backData.frame = contentView.bounds
         backSkills.frame = contentView.bounds
+        contentView.addSubview(frontView)
+        contentView.addSubview(backView)
+        contentView.addSubview(label)
+        contentView.addSubview(iconView)
+        backView.addSubview(backLabel)
+        backView.addSubview(backData)
+        backView.addSubview(backSkills)
+        backView.addSubview(linkedInLabel)
+        backView.addSubview(githubLabel)
+        let linkedInTapGesture = UITapGestureRecognizer(target: self, action: #selector(linkedInTapped))
+        linkedInLabel.addGestureRecognizer(linkedInTapGesture)
+                
+        let githubTapGesture = UITapGestureRecognizer(target: self, action: #selector(githubTapped))
+        githubLabel.addGestureRecognizer(githubTapGesture)
+        backView.isHidden = true
+        contentView.layer.cornerRadius = 10
+        contentView.clipsToBounds = true
+
         setupBackLabelConstraints()
         setupBackDataConstraints()
         setupBackSkillsConstraints()
+        setupContactInfoConstraints()
+
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
     }
     
     override func prepareForReuse() {
@@ -142,33 +168,57 @@ class TileCollectionViewCell: UICollectionViewCell {
         }
     
     
-    func configure(with viewModel: TileCollectionViewCellViewModel, darkModeEnabled: Bool){
+    func configure(with viewModel: CardsViewModel, darkModeEnabled: Bool){
         contentView.backgroundColor = viewModel.background
         label.text = viewModel.label
-        iconView.image = viewModel.icon
         label.textColor = darkModeEnabled ? .darkTile : .main
+        
+        iconView.image = viewModel.icon
         iconView.tintColor = darkModeEnabled ? .darkTile : .main
+        
         backLabel.text = viewModel.backContent
-        backData.text = viewModel.backData
-        backSkills.text = viewModel.backSkills
         backLabel.textColor = darkModeEnabled ? .darkTile : .main
+        
+        backData.text = viewModel.backData
         backData.textColor = darkModeEnabled ? .darkTile : .main
+        
+        backSkills.text = viewModel.backSkills
         backSkills.textColor = darkModeEnabled ? .darkTile : .main
+        
+        linkedInLabel.text = viewModel.linkedInURL
+        githubLabel.text = viewModel.githubURL
+        
+        self.linkedInURL = viewModel.linkedInURL
+        self.githubURL = viewModel.githubURL
     }
     
     func flip() {
-            let fromView = isFlipped ? backView : frontView
-            let toView = isFlipped ? frontView : backView
-            
-        UIView.transition(from: fromView, to: toView, duration: 0.3, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: { [weak self] _ in
-                guard let self = self else { return }
-                           self.isFlipped.toggle()
-                           self.frontView.isHidden = self.isFlipped
-                           self.label.isHidden = self.isFlipped
-                           self.iconView.isHidden = self.isFlipped
-                           self.backLabel.isHidden = !self.isFlipped
-                           self.backData.isHidden = !self.isFlipped
-                           self.backSkills.isHidden = !self.isFlipped
-            })
+        let fromView = isFlipped ? backView : frontView
+        let toView = isFlipped ? frontView : backView
+        
+        UIView.transition(from: fromView, to: toView, duration: 0.3, options: [.transitionFlipFromLeft, .showHideTransitionViews])
+        
+        isFlipped.toggle()
+        frontView.isHidden = isFlipped
+        label.isHidden = isFlipped
+        iconView.isHidden = isFlipped
+        backLabel.isHidden = !isFlipped
+        backData.isHidden = !isFlipped
+        backSkills.isHidden = !isFlipped
+    }
+    
+        private var linkedInURL: String?
+        private var githubURL: String?
+        
+        @objc private func linkedInTapped() {
+            if let url = URL(string: linkedInURL ?? "") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        
+        @objc private func githubTapped() {
+            if let url = URL(string: githubURL ?? "") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         }
 }
