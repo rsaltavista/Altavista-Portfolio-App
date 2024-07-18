@@ -274,7 +274,7 @@ class ViewController: UIViewController{
     
     //MARK: creating navigationBar
     private func setupNavigationBar(){
-        self.title = "Altavista Portfolio App"
+        self.title = "Altavista CV"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: languageLabel)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: darkModeImage)
     }
